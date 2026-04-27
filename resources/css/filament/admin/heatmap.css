@@ -1,0 +1,46 @@
+.heatmap-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    padding: 20px;
+}
+
+.heatmap-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #72777f;
+    text-transform: uppercase;
+}
+
+.heatmap-cell {
+    height: 70px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.cell-count {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.cell-score {
+    font-size: 0.6rem;
+    opacity: 0.8;
+}
+
+/* Clases segun el riesgo */
+.bg-very-low { background-color: #3b82f6; border: 2px solid #2563eb; }
+.bg-low { background-color: #22c55e; border: 2px solid #16a34a; }
+.bg-medium { background-color: #eab308; border: 2px solid #ca8a04; }
+.bg-high { background-color: #f97316; border: 2px solid #ea580c; }
+.bg-critical { background-color: #ef4444; border: 2px solid #dc2626; }
+
+

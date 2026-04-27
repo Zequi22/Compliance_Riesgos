@@ -1,0 +1,14 @@
+.btn-nuevo-riesgo {
+    @apply bg-[#E67E22] hover:bg-[#f89136] text-white font-bold ;
+}
+.fi-ta-ctn{
+    @variant dark{
+        @apply bg-[#2D2D2D] overflow-hidden shadow-2xl;
+    }
+}
+.fi-ta-actions-header-cell{
+    @apply bg-[#E67E22] border-none;
+}
+.fi-ta-header-cell {
+    @apply bg-[#E67E22] text-white font-bold uppercase;
+}

@@ -1,0 +1,14 @@
+
+.fi-wi-stats-overview,
+    .fi-wi-stats-overview .fi-section {
+        @variant dark {
+            background-color: transparent;
+            @apply border-none shadow-none;
+        }
+    }
+
+.fi-wi-stats-overview-stat {
+    @variant dark {
+        @apply bg-[#3D3D3D] border-white/5;
+    }
+}
