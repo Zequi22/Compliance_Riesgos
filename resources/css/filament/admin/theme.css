@@ -1,0 +1,13 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@import './pdf-preview.css';
+@import './riskCardPDF.css';
+@import './executiveReportPDF.css';
+@import './widgets.css';
+@import './heatmap.css';
+@import './listRisk.css';
+@import './layout.css';
+@import './components.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';

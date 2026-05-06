@@ -1,0 +1,150 @@
+.risk-fiche-pdf {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: white !important;
+    color: black !important;
+}
+
+.risk-fiche-pdf .card-header h1 {
+    margin: 0 0 6px 0;
+    font-size: 3rem;
+    color: #E67E22;
+}
+
+.risk-fiche-pdf .card-header .generated {
+    color: #666;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.risk-fiche-pdf .card-title {
+    font-size: 2rem;
+    margin: 2rem 0 2rem 0;
+    color: #111;
+}
+
+.risk-fiche-pdf .card-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+
+.risk-fiche-pdf .card-table td.label {
+    width: 28%;
+    font-weight: 600;
+    color: #2b2b2b;
+}
+
+
+.risk-fiche-pdf .card-table td.value {
+    color: #111;
+}
+
+.risk-fiche-pdf .card-section {
+    padding: 0.8rem 0.8rem 2rem 0.8rem;
+}
+
+.risk-fiche-pdf .card-section h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.risk-fiche-pdf .section-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    color: black;
+}
+
+.risk-fiche-pdf .section-table thead tr {
+    background: #E67E22;
+}
+
+
+.risk-fiche-pdf .section-table th,
+.risk-fiche-pdf .section-table td,
+.risk-fiche-pdf .card-table td.label,
+.risk-fiche-pdf .card-table td.value {
+    padding: 8px 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+
+.risk-fiche-pdf .section-table tr,
+.risk-fiche-pdf .card-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+
+.risk-fiche-pdf .section-table th,
+.risk-fiche-pdf .section-table td,
+.risk-fiche-pdf .card-table td {
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+
+.risk-fiche-pdf .section-table,
+.risk-fiche-pdf .card-table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.risk-fiche-pdf .section-table th {
+    font-weight: 700;
+    font-size: 10px;
+    color: white;
+}
+
+.risk-fiche-pdf .card-logo {
+    max-width: 160px;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* Badge styles */
+.risk-fiche-pdf .badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.risk-fiche-pdf .badge-info {
+    background: #d0e7ff;
+    color: #004085;
+}
+
+.risk-fiche-pdf .badge-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.risk-fiche-pdf .badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.risk-fiche-pdf .badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.risk-fiche-pdf .badge-gray {
+    background: #e2e3e5;
+    color: #383d41;
+}
+
+.risk-fiche-pdf .badge-primary {
+    background: #cce5ff;
+    color: #004085;
+}

@@ -1,0 +1,24 @@
+/* ── ESTRUCTURA PRINCIPAL DEL TEMA Y LAYOUT ──────────────────── */
+.fi-main {
+    @variant dark {
+        @apply bg-[#1E1E1E] text-[#FAFAFA];
+    }
+}
+
+.fi-topbar {
+    @variant dark {
+        @apply bg-[#3D3D3D] backdrop-blur-xl border-b border-white/5;
+    }
+}
+
+.fi-section {
+    @variant dark {
+        @apply bg-[#2D2D2D];
+    }
+}
+
+.fi-sidebar {
+    @variant dark {
+        @apply bg-[#252525];
+    }
+}

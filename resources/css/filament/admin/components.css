@@ -1,0 +1,61 @@
+/* ── COMPONENTES, MODALES, BOTONES Y TABLAS ──────────────────── */
+.fi-modal-window {
+    @variant dark {
+        @apply bg-[#2D2D2D] text-[#FAFAFA];
+    }
+}
+
+button[x-on\:click="close()"] {
+    @apply bg-[white] border border-gray-300 text-gray-700 transition w-full justify-center sm:w-auto;
+
+    @variant dark {
+        @apply bg-[#3D3D3D] border-[#555] text-white hover:bg-[#4D4D4D];
+    }
+}
+
+.fi-ta-header-cell {
+    @apply bg-[#E67E22] text-white font-bold uppercase;
+}
+
+/* Optimización: Iconos siempre blancos en botones naranjas */
+.fi-color-primary .fi-btn-icon,
+.fi-color-primary svg {
+    @apply !text-white;
+}
+
+.fi-ac-btn-action {
+    @apply bg-[#E67E22] text-white transition hover:bg-[#D68910] w-full justify-center sm:w-auto;
+
+    @variant dark {
+        @apply bg-[#E67E22] text-white hover:bg-[#D68910];
+    }
+}
+
+/* Fix para inputs y labels en modo oscuro */
+@variant dark {
+    .fi-fo-select-input,
+    .fi-fo-text-input,
+    .fi-fo-textarea {
+        @apply !bg-[#3D3D3D] !text-[#FAFAFA] !border-[#555];
+    }
+
+    .fi-fo-field-label {
+        @apply !text-[#FAFAFA];
+    }
+
+    /* Icono de validacion especifico */
+    [x-on\:click*="validar"] .fi-btn-icon,
+    [x-on\:click*="validar"] .fi-icon {
+        @apply !text-white;
+    }
+
+    /* Forzar fondo oscuro en el modal-content */
+    .fi-modal-content {
+        @apply !bg-[#2D2D2D] !text-[#FAFAFA] !rounded-xl;
+    }
+}
+
+/* Optimización: Campana siempre naranja */
+.fi-topbar-database-notifications-btn svg {
+    @apply !text-[#E67E22];
+}
