@@ -90,33 +90,22 @@ class Risk extends Model
                     return 'No Evaluado';
                 }
 
-                // Filtrar residual y luego inherente
-                $residual = $assessments->where('type', 'residual')->sortByDesc('assessed_at')->first();
-                if ($residual) {
-                    $score = $residual->score;
-                } else {
-                    $inherent = $assessments->where('type', 'inherent')->sortByDesc('assessed_at')->first();
-                    $score = $inherent ? $inherent->score : null;
-                }
+                // Prefiere la evaluación residual más reciente; si no existe, usa la inherente
+                $score = $assessments->where('type', 'residual')->sortByDesc('assessed_at')->first()?->score
+                    ?? $assessments->where('type', 'inherent')->sortByDesc('assessed_at')->first()?->score;
 
                 if (! $score) {
                     return 'No Evaluado';
                 }
 
-                if ($score <= 2) {
-                    return 'Muy Bajo';
-                }
-                if ($score <= 4) {
-                    return 'Bajo';
-                }
-                if ($score <= 9) {
-                    return 'Medio';
-                }
-                if ($score <= 14) {
-                    return 'Alto';
-                }
-
-                return 'Crítico';
+                // Escala: 1-2 Muy Bajo | 3-4 Bajo | 5-9 Medio | 10-14 Alto | 15+ Crítico
+                return match (true) {
+                    $score <= 2  => 'Muy Bajo',
+                    $score <= 4  => 'Bajo',
+                    $score <= 9  => 'Medio',
+                    $score <= 14 => 'Alto',
+                    default      => 'Crítico',
+                };
             }
         );
     }
@@ -149,10 +138,11 @@ class Risk extends Model
 
     protected static function booted()
     {
+        // Registra automáticamente cada transición de estado en el historial de auditoría
         static::updated(function (Risk $risk) {
             if ($risk->isDirty('status')) {
                 RiskStatusHistory::create([
-                    'risk_id' => $risk->id,
+                    'risk_id'    => $risk->id,
                     'old_status' => $risk->getOriginal('status'),
                     'new_status' => $risk->status,
                     'changed_by' => auth()->id(),
@@ -168,19 +158,13 @@ class Risk extends Model
             return 0;
         }
 
-        $totalScore = 0;
-        $count = $controls->count();
+        // Suficiente = 100 % | Medio = 50 % | Insuficiente = 0 %
+        $avg = $controls->avg(fn ($control) => match ($control->effectiveness) {
+            'Suficiente' => 100,
+            'Medio'      => 50,
+            default      => 0,   // Insuficiente o valor desconocido
+        });
 
-        foreach ($controls as $control) {
-            $score = match ($control->effectiveness) {
-                'Suficiente' => 100,
-                'Medio' => 50,
-                'Insuficiente' => 0,
-                default => 0,
-            };
-            $totalScore += $score;
-        }
-
-        return (int) round($totalScore / $count);
+        return (int) round($avg);
     }
 }

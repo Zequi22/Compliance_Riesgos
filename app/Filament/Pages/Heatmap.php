@@ -19,32 +19,31 @@ class Heatmap extends Page
     public ?int $score = null;
 
     protected function getViewData(): array
-
     {
+        // Solo pasamos $matrix; getRiskByScore() se llama directamente en la vista (reactivo a $this->score)
         return [
             'matrix' => $this->getMatrixData(),
-            'slectRisk' => $this->getRiskByScore(),
         ];
     }
+
     public function getMatrixData()
     {
+        // Agrupa evaluaciones inherentes por probabilidad e impacto para construir la matriz 5×5
         return DB::table('assessments')
-            //contamos los registros que hay en cada combinacion
             ->select('probability', 'impact', DB::raw('count(*) as total'))
-            //filtramos por el tipo
             ->where('type', 'inherent')
-            //cruzamos los datos y lo metemos en un array
             ->groupBy('probability', 'impact')
             ->get()
-            //agrupamos por la probabilidad
-            ->groupBy('probability')
-            //orgnizamos el resultado
-            ->map(fn($item) => $item->keyBy('impact'));
+            ->groupBy('probability')               // filas = niveles de probabilidad
+            ->map(fn ($row) => $row->keyBy('impact')); // columnas = niveles de impacto
     }
 
     public function getRiskByScore()
     {
-        if (! $this->score) return collect();
+        // Devuelve vacío si no hay score seleccionado (clic en celda del heatmap)
+        if (! $this->score) {
+            return collect();
+        }
 
         return Assessment::query()
             ->with('risk')

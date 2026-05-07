@@ -16,21 +16,27 @@ class RiskOverview extends StatsOverviewWidget
 
     protected function getStats(): array
     {
-        $totalRiesgos = Risk::count();
+        $totalRiesgos  = Risk::count();
         $enTratamiento = Risk::where('status', Risk::STATUS_TRATAMIENTO)->count();
-        $pendientes = Action::whereNotIn('status', [Action::STATUS_CERRADA, Action::STATUS_CANCELADA])->count();
-        // Cálculo para los riesgos críticos o altos utilizando consulta optimizada
-        $range = [10, 25]; // Alto y Crítico
+        $pendientes    = Action::whereNotIn('status', [Action::STATUS_CERRADA, Action::STATUS_CANCELADA])->count();
+
+        // Riesgos Alto (10-14) y Crítico (15-25): prioriza evaluación residual; si no existe, usa inherente
+        $range      = [10, 25];
         $totalAltos = Risk::where(function ($q) use ($range) {
             $q->whereHas('assessments', function ($q2) use ($range) {
                 $q2->where('type', 'residual')->whereBetween('score', $range);
             })->orWhere(function ($q3) use ($range) {
-                $q3->whereDoesntHave('assessments', fn($q4) => $q4->where('type', 'residual'))
+                $q3->whereDoesntHave('assessments', fn ($q4) => $q4->where('type', 'residual'))
                     ->whereHas('assessments', function ($q5) use ($range) {
                         $q5->where('type', 'inherent')->whereBetween('score', $range);
                     });
             });
         })->count();
+
+        // Calculado una sola vez para reutilizarlo en valor y color (evita doble consulta SQL)
+        $overdueReviews = Risk::whereNotNull('next_review_at')
+            ->where('next_review_at', '<', now())
+            ->count();
 
         return [
             Stat::make('Total de Riesgos', $totalRiesgos)
@@ -59,10 +65,10 @@ class RiskOverview extends StatsOverviewWidget
                 ->color('success')
                 ->extraAttributes(['class' => 'stat-success']),
 
-            Stat::make('Revisiones Vencidas', Risk::where('next_review_at', '<', now())->count())
+            Stat::make('Revisiones Vencidas', $overdueReviews)
                 ->icon('heroicon-o-clock')
                 ->description('Riesgos que requieren revisión')
-                ->color(fn() => Risk::where('next_review_at', '<', now())->count() > 0 ? 'danger' : 'gray'),
+                ->color($overdueReviews > 0 ? 'danger' : 'gray'),
 
             Stat::make('Evidencias', RiskDocument::count())
                 ->icon('heroicon-o-document-text')

@@ -9,7 +9,7 @@
             <?php for ($i = 1; $i <= 5; $i++): ?>
                 <div class="heatmap-label">{{ $i }} - {{ $impactLabels[$i] }}</div>
             <?php endfor; ?>
-            <?php $matrix = $this->getMatrixData() ?>
+            <?php /* $matrix viene de getViewData() — no hace falta llamar al método de nuevo */ ?>
             <?php for ($p = 5; $p >= 1; $p--): ?>
                 <div class="heatmap-label">
                     <?php echo $p; ?> - <?php echo $probLabels[$p]; ?>
@@ -87,7 +87,7 @@
                                     <?php
                                     $type = $evaluacion->type;
                                     if ($type === 'inherent') {
-                                        $type = 'Inneherente';
+                                        $type = 'Inherente';
                                         $color = 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800';
                                     } elseif ($type === 'residual') {
                                         $type = 'Residual';

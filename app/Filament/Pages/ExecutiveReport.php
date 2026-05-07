@@ -100,10 +100,15 @@ class ExecutiveReport extends Page
             ->get();
 
         // ── 4. CONTROLES INSUFICIENTES EN RIESGOS CRÍTICOS ───────────────────
-        $criticalRiskIds = Risk::with('assessments')->get()
-            ->filter(fn ($r) => ($r->assessments->where('type', 'residual')->sortByDesc('assessed_at')->first()?->score
-                ?? $r->assessments->where('type', 'inherent')->sortByDesc('assessed_at')->first()?->score ?? 0) >= 10)
-            ->pluck('id');
+        // IDs de riesgos Alto/Crítico (score >= 10): residual preferido, inherente como fallback.
+        // Se resuelve en la BD con la misma lógica del filtro de nivel en RiskResource.
+        $criticalRiskIds = Risk::where(function ($q) {
+            $q->whereHas('assessments', fn ($q2) => $q2->where('type', 'residual')->where('score', '>=', 10))
+              ->orWhere(fn ($q3) => $q3
+                  ->whereDoesntHave('assessments', fn ($q4) => $q4->where('type', 'residual'))
+                  ->whereHas('assessments', fn ($q5) => $q5->where('type', 'inherent')->where('score', '>=', 10))
+              );
+        })->pluck('id');
 
         $insufficientControls = Control::with(['risk.organizationalUnit', 'responsable'])
             ->where('effectiveness', 'Insuficiente')

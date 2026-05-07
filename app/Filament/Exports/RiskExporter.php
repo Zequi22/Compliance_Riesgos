@@ -64,10 +64,11 @@ class RiskExporter extends Exporter
                 ->state(fn ($record) => $record->actions()->where('status', '!=', Action::STATUS_CERRADA)->count()),
             ExportColumn::make('overdue_actions_total')
                 ->label('# Acciones Vencidas')
+                // Filtra en BD: no cerrada + commitment_date anterior a hoy (≡ isOverdue())
                 ->state(fn ($record) => $record->actions()
                     ->where('status', '!=', Action::STATUS_CERRADA)
-                    ->get()
-                    ->filter(fn($action) => $action->isOverdue())
+                    ->whereNotNull('commitment_date')
+                    ->whereDate('commitment_date', '<', now()->toDateString())
                     ->count()
                 ),
 
