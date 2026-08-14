@@ -11,9 +11,9 @@ class ControlSeeder extends Seeder
     public function run(): void
     {
         $controls = [
-            // ── Incumplimiento de plazos en Plan de Igualdad ─────────────────
+            // ── Retrasos en la entrega de proyectos ───────────────────────────
             [
-                'risk'          => 'Incumplimiento de plazos en Plan de Igualdad',
+                'risk'          => 'Retrasos en la entrega de proyectos de consultoría',
                 'title'         => 'Cronograma maestro con hitos y alertas de desviación',
                 'description'   => 'Planificación detallada por proyecto con fechas clave, responsables y alertas automáticas cuando se supera el 80% del plazo.',
                 'type'          => 'Preventivo',
@@ -21,7 +21,7 @@ class ControlSeeder extends Seeder
                 'effectiveness' => 'Suficiente',
             ],
             [
-                'risk'          => 'Incumplimiento de plazos en Plan de Igualdad',
+                'risk'          => 'Retrasos en la entrega de proyectos de consultoría',
                 'title'         => 'Revisión semanal de estado y bloqueos por proyecto',
                 'description'   => 'Reunión interna semanal con checklist de estado, impedimentos detectados y acciones correctoras inmediatas.',
                 'type'          => 'Reactivo',
@@ -29,94 +29,40 @@ class ControlSeeder extends Seeder
                 'effectiveness' => 'Medio',
             ],
 
-            // ── Diagnóstico con evidencias insuficientes ──────────────────────
+            // ── Evidencias insuficientes ──────────────────────────────────────
             [
-                'risk'          => 'Diagnóstico de igualdad con evidencias insuficientes',
+                'risk'          => 'Evidencias insuficientes en los entregables',
                 'title'         => 'Checklist de evidencias mínimas obligatorias por fase',
-                'description'   => 'Lista de control con los documentos requeridos para cada fase del diagnóstico; bloquea el avance si no está completa.',
+                'description'   => 'Lista de control con los documentos requeridos para cada fase del proyecto; bloquea el avance si no está completa.',
                 'type'          => 'Preventivo',
                 'frequency'     => 'Mensual',
                 'effectiveness' => 'Suficiente',
             ],
             [
-                'risk'          => 'Diagnóstico de igualdad con evidencias insuficientes',
+                'risk'          => 'Evidencias insuficientes en los entregables',
                 'title'         => 'Revisión por pares antes de entrega al cliente',
-                'description'   => 'Revisión interna obligatoria por una segunda consultora antes de enviar cualquier entregable al cliente.',
+                'description'   => 'Revisión interna obligatoria por una segunda persona cualificada antes de enviar cualquier entregable al cliente.',
                 'type'          => 'Reactivo',
                 'frequency'     => 'Mensual',
                 'effectiveness' => 'Medio',
             ],
 
-            // ── Auditoría retributiva ─────────────────────────────────────────
+            // ── Incumplimiento normativo ──────────────────────────────────────
             [
-                'risk'          => 'Auditoría retributiva con datos salariales inconsistentes',
-                'title'         => 'Validación cruzada de datos salariales con tres fuentes',
-                'description'   => 'Comparación de datos de nómina, sistema de RRHH y tabla de puestos antes de iniciar el análisis retributivo.',
-                'type'          => 'Preventivo',
-                'frequency'     => 'Mensual',
-                'effectiveness' => 'Medio',
-            ],
-            [
-                'risk'          => 'Auditoría retributiva con datos salariales inconsistentes',
-                'title'         => 'Revisión jurídica del informe final antes de entrega',
-                'description'   => 'Validación del área legal del informe de auditoría retributiva antes de su presentación al cliente.',
-                'type'          => 'Reactivo',
-                'frequency'     => 'Mensual',
-                'effectiveness' => 'Suficiente',
-            ],
-
-            // ── Protocolo de acoso ────────────────────────────────────────────
-            [
-                'risk'          => 'Protocolo de acoso sexual y laboral incompleto o no comunicado',
-                'title'         => 'Revisión legal anual del protocolo de acoso',
-                'description'   => 'Actualización del protocolo conforme a normativa vigente con validación del área jurídica y aprobación de la Dirección.',
+                'risk'          => 'Incumplimiento normativo en la prestación de servicios',
+                'title'         => 'Revisión jurídica anual de procedimientos y protocolos',
+                'description'   => 'Actualización de procedimientos conforme a la normativa vigente con validación del área jurídica y aprobación de la Dirección.',
                 'type'          => 'Preventivo',
                 'frequency'     => 'Anual',
                 'effectiveness' => 'Suficiente',
             ],
             [
-                'risk'          => 'Protocolo de acoso sexual y laboral incompleto o no comunicado',
-                'title'         => 'Comunicación y formación sobre el protocolo a toda la plantilla',
-                'description'   => 'Difusión anual del protocolo con sesión formativa obligatoria y acuse de recibo firmado por cada persona de la plantilla.',
+                'risk'          => 'Incumplimiento normativo en la prestación de servicios',
+                'title'         => 'Comunicación y formación sobre procedimientos a la plantilla',
+                'description'   => 'Difusión anual de los procedimientos con sesión formativa obligatoria y acuse de recibo firmado por cada persona.',
                 'type'          => 'Preventivo',
                 'frequency'     => 'Anual',
                 'effectiveness' => 'Medio',
-            ],
-
-            // ── Bonificaciones FUNDAE ─────────────────────────────────────────
-            [
-                'risk'          => 'Pérdida de bonificaciones FUNDAE por incumplimientos formales',
-                'title'         => 'Control documental previo al inicio de cada acción formativa',
-                'description'   => 'Verificación de todos los requisitos FUNDAE (comunicación, plataforma RLT, participantes) antes del inicio de cada acción.',
-                'type'          => 'Preventivo',
-                'frequency'     => 'Mensual',
-                'effectiveness' => 'Suficiente',
-            ],
-            [
-                'risk'          => 'Pérdida de bonificaciones FUNDAE por incumplimientos formales',
-                'title'         => 'Revisión mensual de expedientes FUNDAE en curso',
-                'description'   => 'Revisión de todos los expedientes activos para detectar documentación pendiente o plazos próximos a vencer.',
-                'type'          => 'Reactivo',
-                'frequency'     => 'Mensual',
-                'effectiveness' => 'Medio',
-            ],
-
-            // ── Justificación horas formativas ────────────────────────────────
-            [
-                'risk'          => 'Errores en la justificación de horas formativas ante FUNDAE',
-                'title'         => 'Registro de asistencia firmado diariamente por participantes y formador',
-                'description'   => 'Hoja de asistencia con firma obligatoria de cada participante y del formador al inicio y al final de cada jornada.',
-                'type'          => 'Preventivo',
-                'frequency'     => 'Semanal',
-                'effectiveness' => 'Suficiente',
-            ],
-            [
-                'risk'          => 'Errores en la justificación de horas formativas ante FUNDAE',
-                'title'         => 'Revisión de partes de asistencia antes de la comunicación a FUNDAE',
-                'description'   => 'Comprobación manual de coherencia y completitud de los partes de asistencia antes de realizar la comunicación oficial.',
-                'type'          => 'Reactivo',
-                'frequency'     => 'Mensual',
-                'effectiveness' => 'Suficiente',
             ],
 
             // ── Accesos internos ──────────────────────────────────────────────
@@ -149,7 +95,7 @@ class ControlSeeder extends Seeder
             [
                 'risk'          => 'Retrasos en cobros por ausencia de seguimiento sistematizado',
                 'title'         => 'Alerta de vencimiento de facturas en el sistema de gestión',
-                'description'   => 'Configuración de alertas automáticas en el ERP cuando una factura supera su fecha de vencimiento sin registrar el cobro.',
+                'description'   => 'Configuración de alertas automáticas cuando una factura supera su fecha de vencimiento sin registrar el cobro.',
                 'type'          => 'Preventivo',
                 'frequency'     => 'Mensual',
                 'effectiveness' => 'Insuficiente',
@@ -206,16 +152,6 @@ class ControlSeeder extends Seeder
                 'description'   => 'Simulacro anual de caída de sistemas para verificar tiempo de recuperación (RTO), punto de recuperación (RPO) y efectividad de los procedimientos.',
                 'type'          => 'Reactivo',
                 'frequency'     => 'Anual',
-                'effectiveness' => 'Insuficiente',
-            ],
-
-            // ── Seguimiento sin indicadores ───────────────────────────────────
-            [
-                'risk'          => 'Seguimiento sin indicadores del Plan de Igualdad',
-                'title'         => 'Cuadro de mando trimestral de indicadores del Plan de Igualdad',
-                'description'   => 'Dashboard con KPIs de actividad, cumplimiento e impacto actualizado trimestralmente y compartido con el cliente y la RLT.',
-                'type'          => 'Preventivo',
-                'frequency'     => 'Mensual',
                 'effectiveness' => 'Insuficiente',
             ],
 

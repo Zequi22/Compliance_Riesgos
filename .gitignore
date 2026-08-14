@@ -1,4 +1,7 @@
 *.log
+seed_output.txt
+migrate.log
+composer_error.log
 .DS_Store
 .env
 .env.backup

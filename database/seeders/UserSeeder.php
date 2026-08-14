@@ -27,24 +27,18 @@ class UserSeeder extends Seeder
             );
         }
 
-        // 2. Definir usuarios
+        // 2. Definir usuarios de demostración (datos ficticios)
         $users = [
-            ['name' => '***REMOVED***',  'last_name' => '***REMOVED*** Núñez',     'email' => 'u1612m@example.com',  'job_title' => 'CEO',                                'role' => 'super_admin',             'area' => 'Dirección',  'department' => 'Dirección'],
-            ['name' => '***REMOVED***',       'last_name' => '***REMOVED*** Oliver',     'email' => 'u5286l@example.com',   'job_title' => 'Responsable de Desarrollo de Negocio','role' => 'super_admin',             'area' => 'Dirección',  'department' => 'Dirección'],
-            ['name' => '***REMOVED***',   'last_name' => '***REMOVED***',     'email' => 'u4855z@example.com',   'job_title' => 'Responsable Área Legal',              'role' => 'Responsable Compliance',  'area' => 'Operaciones','department' => 'Legal'],
-            ['name' => '***REMOVED***',      'last_name' => '***REMOVED***',       'email' => 'u2534c@example.com',   'job_title' => 'Técnica Administración',              'role' => 'Técnico',                 'area' => 'Operaciones','department' => 'Administración'],
-            ['name' => '***REMOVED***',     'last_name' => '***REMOVED***',    'email' => 'u8638a@example.com',   'job_title' => 'Responsable Comercial',               'role' => 'Responsable Área',        'area' => 'Operaciones','department' => 'Comercial'],
-            ['name' => '***REMOVED***',     'last_name' => '***REMOVED***',  'email' => 'u5542r@example.com',    'job_title' => 'Técnica Comercial',                   'role' => 'Consulta',                'area' => 'Operaciones','department' => 'Comercial'],
-            ['name' => '***REMOVED***',      'last_name' => '***REMOVED***',     'email' => 'u6583i@example.com',   'job_title' => 'Responsable Formación',               'role' => 'Responsable Área',        'area' => 'Negocio',    'department' => 'Formación'],
-            ['name' => '***REMOVED***',      'last_name' => '***REMOVED***',      'email' => 'u2849g@example.com',   'job_title' => 'Técnica Formación',                   'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'Formación'],
-            ['name' => '***REMOVED***',      'last_name' => '***REMOVED***',    'email' => 'u8123z@example.com',   'job_title' => 'Técnica Formación',                   'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'Formación'],
-            ['name' => '***REMOVED***',        'last_name' => '***REMOVED***',     'email' => 'u7879h@example.com',   'job_title' => 'Tutora',                              'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'Formación'],
-            ['name' => '***REMOVED***',    'last_name' => '***REMOVED***',      'email' => 'u2279k@example.com',     'job_title' => 'Responsable Igualdad',                'role' => 'Responsable Área',        'area' => 'Negocio',    'department' => 'Consultoría Igualdad'],
-            ['name' => '***REMOVED***',        'last_name' => '***REMOVED***',            'email' => 'u6758k@example.com',  'job_title' => 'Técnica Igualdad',                    'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'Consultoría Igualdad'],
-            ['name' => '***REMOVED***',     'last_name' => '***REMOVED***',              'email' => 'u4366j@example.com',     'job_title' => 'Responsable Consultoría RRHH',        'role' => 'Responsable Área',        'area' => 'Negocio',    'department' => 'Consultoría RRHH'],
-            ['name' => '***REMOVED***',     'last_name' => '***REMOVED***',        'email' => 'u1105e@example.com',    'job_title' => 'Responsable IT',                      'role' => 'Responsable Área',        'area' => 'Negocio',    'department' => 'IT'],
-            ['name' => '***REMOVED***',   'last_name' => '***REMOVED***',              'email' => 'u5993k@example.com',    'job_title' => 'Desarrollador IT',                    'role' => 'super_admin',             'area' => 'Negocio',    'department' => 'IT'],
-            ['name' => '***REMOVED***',       'last_name' => '***REMOVED***',       'email' => 'u4298d@example.com',   'job_title' => 'Desarrolladora IT',                   'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'IT'],
+            ['name' => '***REMOVED***',        'last_name' => 'García López',    'email' => 'admin@example.com',       'job_title' => 'Directora General',     'role' => 'super_admin',            'area' => 'Dirección',  'department' => 'Dirección'],
+            ['name' => 'Carlos',     'last_name' => 'Ruiz Fernández',  'email' => 'carlos.ruiz@example.com', 'job_title' => 'Responsable Legal',     'role' => 'Responsable Compliance', 'area' => 'Operaciones','department' => 'Legal'],
+            ['name' => 'Lucía',      'last_name' => 'Martín Sánchez',  'email' => 'lucia.martin@example.com','job_title' => 'Técnica Administración','role' => 'Técnico',                 'area' => 'Operaciones','department' => 'Administración'],
+            ['name' => 'Pedro',      'last_name' => '***REMOVED*** Navarro',   'email' => 'pedro.gomez@example.com', 'job_title' => 'Responsable Comercial', 'role' => 'Responsable Área',        'area' => 'Operaciones','department' => 'Comercial'],
+            ['name' => 'Marta',      'last_name' => 'Torres Vidal',    'email' => 'marta.torres@example.com','job_title' => 'Técnica Comercial',    'role' => 'Consulta',                'area' => 'Operaciones','department' => 'Comercial'],
+            ['name' => 'Javier',     'last_name' => 'Moreno Ramos',    'email' => 'javier.moreno@example.com','job_title' => 'Responsable Formación', 'role' => 'Responsable Área',        'area' => 'Negocio',    'department' => 'Formación'],
+            ['name' => 'Sara',       'last_name' => 'Domínguez Peña',  'email' => 'sara.dominguez@example.com','job_title' => 'Técnica Formación',   'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'Formación'],
+            ['name' => 'Miguel',     'last_name' => 'Ortega Ruiz',     'email' => 'miguel.ortega@example.com','job_title' => 'Responsable IT',       'role' => 'Responsable Área',        'area' => 'Negocio',    'department' => 'IT'],
+            ['name' => 'Elena',      'last_name' => 'Castro Prieto',   'email' => 'elena.castro@example.com','job_title' => 'Desarrolladora IT',    'role' => 'super_admin',             'area' => 'Negocio',    'department' => 'IT'],
+            ['name' => 'Diego',      'last_name' => 'Vega Morales',    'email' => 'diego.vega@example.com',  'job_title' => 'Técnico Igualdad',     'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'Consultoría Igualdad'],
         ];
 
         // 3. Crear / actualizar usuarios y sincronizar su rol
