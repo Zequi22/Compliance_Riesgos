@@ -29,10 +29,10 @@ class UserSeeder extends Seeder
 
         // 2. Definir usuarios de demostración (datos ficticios)
         $users = [
-            ['name' => '***REMOVED***',        'last_name' => 'García López',    'email' => 'admin@example.com',       'job_title' => 'Directora General',     'role' => 'super_admin',            'area' => 'Dirección',  'department' => 'Dirección'],
+            ['name' => 'Claudia',     'last_name' => 'García López',    'email' => 'admin@example.com',       'job_title' => 'Directora General',     'role' => 'super_admin',            'area' => 'Dirección',  'department' => 'Dirección'],
             ['name' => 'Carlos',     'last_name' => 'Ruiz Fernández',  'email' => 'carlos.ruiz@example.com', 'job_title' => 'Responsable Legal',     'role' => 'Responsable Compliance', 'area' => 'Operaciones','department' => 'Legal'],
             ['name' => 'Lucía',      'last_name' => 'Martín Sánchez',  'email' => 'lucia.martin@example.com','job_title' => 'Técnica Administración','role' => 'Técnico',                 'area' => 'Operaciones','department' => 'Administración'],
-            ['name' => 'Pedro',      'last_name' => '***REMOVED*** Navarro',   'email' => 'pedro.gomez@example.com', 'job_title' => 'Responsable Comercial', 'role' => 'Responsable Área',        'area' => 'Operaciones','department' => 'Comercial'],
+            ['name' => 'Pedro',      'last_name' => 'Navarro',         'email' => 'pedro.navarro@example.com','job_title' => 'Responsable Comercial', 'role' => 'Responsable Área',        'area' => 'Operaciones','department' => 'Comercial'],
             ['name' => 'Marta',      'last_name' => 'Torres Vidal',    'email' => 'marta.torres@example.com','job_title' => 'Técnica Comercial',    'role' => 'Consulta',                'area' => 'Operaciones','department' => 'Comercial'],
             ['name' => 'Javier',     'last_name' => 'Moreno Ramos',    'email' => 'javier.moreno@example.com','job_title' => 'Responsable Formación', 'role' => 'Responsable Área',        'area' => 'Negocio',    'department' => 'Formación'],
             ['name' => 'Sara',       'last_name' => 'Domínguez Peña',  'email' => 'sara.dominguez@example.com','job_title' => 'Técnica Formación',   'role' => 'Consulta',                'area' => 'Negocio',    'department' => 'Formación'],
